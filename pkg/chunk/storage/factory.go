@@ -2,6 +2,7 @@ package storage
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"strings"
@@ -19,6 +20,7 @@ import (
 	"github.com/cortexproject/cortex/pkg/chunk/cassandra"
 	"github.com/cortexproject/cortex/pkg/chunk/gcp"
 	"github.com/cortexproject/cortex/pkg/chunk/grpc"
+	"github.com/cortexproject/cortex/pkg/chunk/ks3"
 	"github.com/cortexproject/cortex/pkg/chunk/local"
 	"github.com/cortexproject/cortex/pkg/chunk/objectclient"
 	"github.com/cortexproject/cortex/pkg/chunk/openstack"
@@ -48,6 +50,7 @@ const (
 	StorageTypeGCS            = "gcs"
 	StorageTypeGrpc           = "grpc-store"
 	StorageTypeS3             = "s3"
+	StorageTypeKS3            = "ks3"
 	StorageTypeSwift          = "swift"
 )
 
@@ -81,6 +84,7 @@ type StoreLimits interface {
 type Config struct {
 	Engine                 string                  `yaml:"engine"`
 	AWSStorageConfig       aws.StorageConfig       `yaml:"aws"`
+	KS3StorageConfig       ks3.StorageConfig       `yaml:"ks3"`
 	AzureStorageConfig     azure.BlobStorageConfig `yaml:"azure"`
 	GCPStorageConfig       gcp.Config              `yaml:"bigtable"`
 	GCSConfig              gcp.GCSConfig           `yaml:"gcs"`
@@ -235,6 +239,19 @@ func NewIndexClient(name string, cfg Config, schemaCfg chunk.SchemaConfig, regis
 	case StorageTypeInMemory:
 		store := chunk.NewMockStorage()
 		return store, nil
+	case StorageTypeKS3:
+		if cfg.KS3StorageConfig.DynamoDB.URL == nil {
+			return nil, fmt.Errorf("Must set -dynamodb.url in aws mode")
+		}
+		path := strings.TrimPrefix(cfg.KS3StorageConfig.DynamoDB.URL.Path, "/")
+		if len(path) > 0 {
+			level.Warn(util_log.Logger).Log("msg", "ignoring DynamoDB URL path", "path", path)
+		}
+
+		bs, _ := json.Marshal(cfg.KS3StorageConfig.DynamoDBConfig)
+		c := new(aws.DynamoDBConfig)
+		_ = json.Unmarshal(bs, c)
+		return aws.NewDynamoDBIndexClient(*c, schemaCfg, registerer)
 	case StorageTypeAWS, StorageTypeAWSDynamo:
 		if cfg.AWSStorageConfig.DynamoDB.URL == nil {
 			return nil, fmt.Errorf("Must set -dynamodb.url in aws mode")
@@ -267,6 +284,8 @@ func NewChunkClient(name string, cfg Config, schemaCfg chunk.SchemaConfig, regis
 	switch name {
 	case StorageTypeInMemory:
 		return chunk.NewMockStorage(), nil
+	case StorageTypeKS3:
+		return newChunkClientFromStore(ks3.NewKS3ObjectClient(cfg.KS3StorageConfig.KS3Config))
 	case StorageTypeAWS, StorageTypeS3:
 		return newChunkClientFromStore(aws.NewS3ObjectClient(cfg.AWSStorageConfig.S3Config))
 	case StorageTypeAWSDynamo:
@@ -321,6 +340,19 @@ func NewTableClient(name string, cfg Config, registerer prometheus.Registerer) (
 	switch name {
 	case StorageTypeInMemory:
 		return chunk.NewMockStorage(), nil
+	case StorageTypeKS3:
+		if cfg.KS3StorageConfig.DynamoDB.URL == nil {
+			return nil, fmt.Errorf("Must set -dynamodb.url in aws mode")
+		}
+		path := strings.TrimPrefix(cfg.KS3StorageConfig.DynamoDB.URL.Path, "/")
+		if len(path) > 0 {
+			level.Warn(util_log.Logger).Log("msg", "ignoring DynamoDB URL path", "path", path)
+		}
+
+		bs, _ := json.Marshal(cfg.KS3StorageConfig.DynamoDBConfig)
+		c := new(aws.DynamoDBConfig)
+		_ = json.Unmarshal(bs, c)
+		return aws.NewDynamoDBTableClient(*c, registerer)
 	case StorageTypeAWS, StorageTypeAWSDynamo:
 		if cfg.AWSStorageConfig.DynamoDB.URL == nil {
 			return nil, fmt.Errorf("Must set -dynamodb.url in aws mode")
@@ -355,6 +387,8 @@ func NewBucketClient(storageConfig Config) (chunk.BucketClient, error) {
 // NewObjectClient makes a new StorageClient of the desired types.
 func NewObjectClient(name string, cfg Config) (chunk.ObjectClient, error) {
 	switch name {
+	case StorageTypeKS3:
+		return ks3.NewKS3ObjectClient(cfg.KS3StorageConfig.KS3Config)
 	case StorageTypeAWS, StorageTypeS3:
 		return aws.NewS3ObjectClient(cfg.AWSStorageConfig.S3Config)
 	case StorageTypeGCS:
@@ -368,6 +402,6 @@ func NewObjectClient(name string, cfg Config) (chunk.ObjectClient, error) {
 	case StorageTypeFileSystem:
 		return local.NewFSObjectClient(cfg.FSConfig)
 	default:
-		return nil, fmt.Errorf("Unrecognized storage client %v, choose one of: %v, %v, %v, %v, %v", name, StorageTypeAWS, StorageTypeS3, StorageTypeGCS, StorageTypeAzure, StorageTypeFileSystem)
+		return nil, fmt.Errorf("Unrecognized storage client %v, choose one of: %v, %v, %v, %v, %v, %v", name, StorageTypeKS3, StorageTypeAWS, StorageTypeS3, StorageTypeGCS, StorageTypeAzure, StorageTypeFileSystem)
 	}
 }
