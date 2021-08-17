@@ -44,6 +44,8 @@ github.com/alicebob/gopher-json
 ## explicit
 github.com/alicebob/miniredis
 github.com/alicebob/miniredis/server
+# github.com/alicebob/miniredis/v2 v2.14.3
+## explicit
 # github.com/armon/go-metrics v0.3.6
 ## explicit
 github.com/armon/go-metrics
@@ -121,140 +123,6 @@ github.com/cespare/xxhash/v2
 github.com/coreos/go-semver/semver
 # github.com/coreos/go-systemd/v22 v22.1.0
 github.com/coreos/go-systemd/v22/journal
-# github.com/cortexproject/cortex v1.10.0
-## explicit
-github.com/cortexproject/cortex/integration/ca
-github.com/cortexproject/cortex/integration/e2e
-github.com/cortexproject/cortex/integration/e2e/cache
-github.com/cortexproject/cortex/integration/e2e/db
-github.com/cortexproject/cortex/integration/e2e/images
-github.com/cortexproject/cortex/integration/e2ecortex
-github.com/cortexproject/cortex/pkg/alertmanager
-github.com/cortexproject/cortex/pkg/alertmanager/alertmanagerpb
-github.com/cortexproject/cortex/pkg/alertmanager/alertspb
-github.com/cortexproject/cortex/pkg/alertmanager/alertstore
-github.com/cortexproject/cortex/pkg/alertmanager/alertstore/bucketclient
-github.com/cortexproject/cortex/pkg/alertmanager/alertstore/configdb
-github.com/cortexproject/cortex/pkg/alertmanager/alertstore/local
-github.com/cortexproject/cortex/pkg/alertmanager/alertstore/objectclient
-github.com/cortexproject/cortex/pkg/alertmanager/merger
-github.com/cortexproject/cortex/pkg/api
-github.com/cortexproject/cortex/pkg/chunk
-github.com/cortexproject/cortex/pkg/chunk/aws
-github.com/cortexproject/cortex/pkg/chunk/azure
-github.com/cortexproject/cortex/pkg/chunk/cache
-github.com/cortexproject/cortex/pkg/chunk/cassandra
-github.com/cortexproject/cortex/pkg/chunk/encoding
-github.com/cortexproject/cortex/pkg/chunk/gcp
-github.com/cortexproject/cortex/pkg/chunk/grpc
-github.com/cortexproject/cortex/pkg/chunk/local
-github.com/cortexproject/cortex/pkg/chunk/objectclient
-github.com/cortexproject/cortex/pkg/chunk/openstack
-github.com/cortexproject/cortex/pkg/chunk/purger
-github.com/cortexproject/cortex/pkg/chunk/storage
-github.com/cortexproject/cortex/pkg/chunk/testutils
-github.com/cortexproject/cortex/pkg/chunk/util
-github.com/cortexproject/cortex/pkg/compactor
-github.com/cortexproject/cortex/pkg/configs
-github.com/cortexproject/cortex/pkg/configs/api
-github.com/cortexproject/cortex/pkg/configs/client
-github.com/cortexproject/cortex/pkg/configs/db
-github.com/cortexproject/cortex/pkg/configs/db/dbtest
-github.com/cortexproject/cortex/pkg/configs/db/memory
-github.com/cortexproject/cortex/pkg/configs/db/postgres
-github.com/cortexproject/cortex/pkg/configs/legacy_promql
-github.com/cortexproject/cortex/pkg/configs/userconfig
-github.com/cortexproject/cortex/pkg/cortex
-github.com/cortexproject/cortex/pkg/cortexpb
-github.com/cortexproject/cortex/pkg/distributor
-github.com/cortexproject/cortex/pkg/distributor/distributorpb
-github.com/cortexproject/cortex/pkg/flusher
-github.com/cortexproject/cortex/pkg/frontend
-github.com/cortexproject/cortex/pkg/frontend/transport
-github.com/cortexproject/cortex/pkg/frontend/v1
-github.com/cortexproject/cortex/pkg/frontend/v1/frontendv1pb
-github.com/cortexproject/cortex/pkg/frontend/v2
-github.com/cortexproject/cortex/pkg/frontend/v2/frontendv2pb
-github.com/cortexproject/cortex/pkg/ingester
-github.com/cortexproject/cortex/pkg/ingester/client
-github.com/cortexproject/cortex/pkg/ingester/index
-github.com/cortexproject/cortex/pkg/prom1/storage/metric
-github.com/cortexproject/cortex/pkg/querier
-github.com/cortexproject/cortex/pkg/querier/astmapper
-github.com/cortexproject/cortex/pkg/querier/batch
-github.com/cortexproject/cortex/pkg/querier/chunkstore
-github.com/cortexproject/cortex/pkg/querier/iterators
-github.com/cortexproject/cortex/pkg/querier/lazyquery
-github.com/cortexproject/cortex/pkg/querier/queryrange
-github.com/cortexproject/cortex/pkg/querier/series
-github.com/cortexproject/cortex/pkg/querier/stats
-github.com/cortexproject/cortex/pkg/querier/tenantfederation
-github.com/cortexproject/cortex/pkg/querier/worker
-github.com/cortexproject/cortex/pkg/ring
-github.com/cortexproject/cortex/pkg/ring/client
-github.com/cortexproject/cortex/pkg/ring/kv
-github.com/cortexproject/cortex/pkg/ring/kv/codec
-github.com/cortexproject/cortex/pkg/ring/kv/consul
-github.com/cortexproject/cortex/pkg/ring/kv/etcd
-github.com/cortexproject/cortex/pkg/ring/kv/memberlist
-github.com/cortexproject/cortex/pkg/ring/testutils
-github.com/cortexproject/cortex/pkg/ruler
-github.com/cortexproject/cortex/pkg/ruler/rulespb
-github.com/cortexproject/cortex/pkg/ruler/rulestore
-github.com/cortexproject/cortex/pkg/ruler/rulestore/bucketclient
-github.com/cortexproject/cortex/pkg/ruler/rulestore/configdb
-github.com/cortexproject/cortex/pkg/ruler/rulestore/local
-github.com/cortexproject/cortex/pkg/ruler/rulestore/objectclient
-github.com/cortexproject/cortex/pkg/scheduler
-github.com/cortexproject/cortex/pkg/scheduler/queue
-github.com/cortexproject/cortex/pkg/scheduler/schedulerpb
-github.com/cortexproject/cortex/pkg/storage/bucket
-github.com/cortexproject/cortex/pkg/storage/bucket/azure
-github.com/cortexproject/cortex/pkg/storage/bucket/filesystem
-github.com/cortexproject/cortex/pkg/storage/bucket/gcs
-github.com/cortexproject/cortex/pkg/storage/bucket/s3
-github.com/cortexproject/cortex/pkg/storage/bucket/swift
-github.com/cortexproject/cortex/pkg/storage/tsdb
-github.com/cortexproject/cortex/pkg/storage/tsdb/bucketindex
-github.com/cortexproject/cortex/pkg/storage/tsdb/testutil
-github.com/cortexproject/cortex/pkg/storegateway
-github.com/cortexproject/cortex/pkg/storegateway/storegatewaypb
-github.com/cortexproject/cortex/pkg/tenant
-github.com/cortexproject/cortex/pkg/testexporter/correctness
-github.com/cortexproject/cortex/pkg/util
-github.com/cortexproject/cortex/pkg/util/chunkcompat
-github.com/cortexproject/cortex/pkg/util/concurrency
-github.com/cortexproject/cortex/pkg/util/extract
-github.com/cortexproject/cortex/pkg/util/fakeauth
-github.com/cortexproject/cortex/pkg/util/flagext
-github.com/cortexproject/cortex/pkg/util/grpc
-github.com/cortexproject/cortex/pkg/util/grpc/encoding/snappy
-github.com/cortexproject/cortex/pkg/util/grpc/healthcheck
-github.com/cortexproject/cortex/pkg/util/grpc/naming
-github.com/cortexproject/cortex/pkg/util/grpcclient
-github.com/cortexproject/cortex/pkg/util/grpcutil
-github.com/cortexproject/cortex/pkg/util/limiter
-github.com/cortexproject/cortex/pkg/util/log
-github.com/cortexproject/cortex/pkg/util/math
-github.com/cortexproject/cortex/pkg/util/middleware
-github.com/cortexproject/cortex/pkg/util/modules
-github.com/cortexproject/cortex/pkg/util/net
-github.com/cortexproject/cortex/pkg/util/process
-github.com/cortexproject/cortex/pkg/util/push
-github.com/cortexproject/cortex/pkg/util/runtimeconfig
-github.com/cortexproject/cortex/pkg/util/services
-github.com/cortexproject/cortex/pkg/util/spanlogger
-github.com/cortexproject/cortex/pkg/util/test
-github.com/cortexproject/cortex/pkg/util/tls
-github.com/cortexproject/cortex/pkg/util/validation
-github.com/cortexproject/cortex/tools/blocksconvert
-github.com/cortexproject/cortex/tools/blocksconvert/builder
-github.com/cortexproject/cortex/tools/blocksconvert/cleaner
-github.com/cortexproject/cortex/tools/blocksconvert/planprocessor
-github.com/cortexproject/cortex/tools/blocksconvert/scanner
-github.com/cortexproject/cortex/tools/blocksconvert/scheduler
-github.com/cortexproject/cortex/tools/querytee
-github.com/cortexproject/cortex/tools/thanosconvert
 # github.com/davecgh/go-spew v1.1.1
 github.com/davecgh/go-spew/spew
 # github.com/deckarep/golang-set v1.7.1
@@ -302,7 +170,7 @@ github.com/go-openapi/jsonpointer
 github.com/go-openapi/jsonreference
 # github.com/go-openapi/loads v0.20.2
 github.com/go-openapi/loads
-# github.com/go-openapi/runtime v0.19.28
+# github.com/go-openapi/runtime v0.19.26
 github.com/go-openapi/runtime
 github.com/go-openapi/runtime/flagext
 github.com/go-openapi/runtime/logger
@@ -314,17 +182,18 @@ github.com/go-openapi/runtime/security
 # github.com/go-openapi/spec v0.20.3
 github.com/go-openapi/spec
 # github.com/go-openapi/strfmt v0.20.1
+## explicit
 github.com/go-openapi/strfmt
-# github.com/go-openapi/swag v0.19.15
+# github.com/go-openapi/swag v0.19.14
+## explicit
 github.com/go-openapi/swag
 # github.com/go-openapi/validate v0.20.2
 github.com/go-openapi/validate
-# github.com/go-redis/redis/v8 v8.9.0
+# github.com/go-redis/redis/v8 v8.2.3
 ## explicit
 github.com/go-redis/redis/v8
 github.com/go-redis/redis/v8/internal
 github.com/go-redis/redis/v8/internal/hashtag
-github.com/go-redis/redis/v8/internal/hscan
 github.com/go-redis/redis/v8/internal/pool
 github.com/go-redis/redis/v8/internal/proto
 github.com/go-redis/redis/v8/internal/rand
@@ -442,12 +311,12 @@ github.com/hashicorp/go-rootcerts
 github.com/hashicorp/go-sockaddr
 # github.com/hashicorp/golang-lru v0.5.4
 github.com/hashicorp/golang-lru/simplelru
-# github.com/hashicorp/memberlist v0.2.3
+# github.com/hashicorp/memberlist v0.2.2
 ## explicit
 github.com/hashicorp/memberlist
 # github.com/hashicorp/serf v0.9.5
 github.com/hashicorp/serf/coordinate
-# github.com/jessevdk/go-flags v1.5.0
+# github.com/jessevdk/go-flags v1.4.0
 github.com/jessevdk/go-flags
 # github.com/jmespath/go-jmespath v0.4.0
 github.com/jmespath/go-jmespath
@@ -560,7 +429,7 @@ github.com/opentracing/opentracing-go/log
 github.com/pkg/errors
 # github.com/pmezard/go-difflib v1.0.0
 github.com/pmezard/go-difflib/difflib
-# github.com/prometheus/alertmanager v0.22.1-0.20210603124511-8b584eb2265e
+# github.com/prometheus/alertmanager v0.21.1-0.20210422101724-8176f78a70e1
 ## explicit
 github.com/prometheus/alertmanager/api
 github.com/prometheus/alertmanager/api/metrics
@@ -615,7 +484,7 @@ github.com/prometheus/client_golang/prometheus/testutil/promlint
 # github.com/prometheus/client_model v0.2.0
 ## explicit
 github.com/prometheus/client_model/go
-# github.com/prometheus/common v0.26.1-0.20210603143733-6ef301f414bf
+# github.com/prometheus/common v0.23.0
 ## explicit
 github.com/prometheus/common/config
 github.com/prometheus/common/expfmt
@@ -921,23 +790,19 @@ go.opencensus.io/trace
 go.opencensus.io/trace/internal
 go.opencensus.io/trace/propagation
 go.opencensus.io/trace/tracestate
-# go.opentelemetry.io/otel v0.20.0
+# go.opentelemetry.io/otel v0.11.0
 go.opentelemetry.io/otel
-go.opentelemetry.io/otel/attribute
+go.opentelemetry.io/otel/api/correlation
+go.opentelemetry.io/otel/api/global
+go.opentelemetry.io/otel/api/global/internal
+go.opentelemetry.io/otel/api/metric
+go.opentelemetry.io/otel/api/metric/registry
+go.opentelemetry.io/otel/api/propagation
+go.opentelemetry.io/otel/api/trace
+go.opentelemetry.io/otel/api/unit
 go.opentelemetry.io/otel/codes
 go.opentelemetry.io/otel/internal
-go.opentelemetry.io/otel/internal/baggage
-go.opentelemetry.io/otel/internal/global
-go.opentelemetry.io/otel/internal/trace/noop
-go.opentelemetry.io/otel/propagation
-go.opentelemetry.io/otel/unit
-# go.opentelemetry.io/otel/metric v0.20.0
-go.opentelemetry.io/otel/metric
-go.opentelemetry.io/otel/metric/global
-go.opentelemetry.io/otel/metric/number
-go.opentelemetry.io/otel/metric/registry
-# go.opentelemetry.io/otel/trace v0.20.0
-go.opentelemetry.io/otel/trace
+go.opentelemetry.io/otel/label
 # go.uber.org/atomic v1.7.0
 ## explicit
 go.uber.org/atomic
@@ -964,7 +829,7 @@ golang.org/x/lint/golint
 # golang.org/x/mod v0.4.1
 golang.org/x/mod/module
 golang.org/x/mod/semver
-# golang.org/x/net v0.0.0-20210525063256-abc453219eb5
+# golang.org/x/net v0.0.0-20210505214959-0714010a04ed
 ## explicit
 golang.org/x/net/bpf
 golang.org/x/net/context
@@ -982,7 +847,7 @@ golang.org/x/net/ipv6
 golang.org/x/net/netutil
 golang.org/x/net/publicsuffix
 golang.org/x/net/trace
-# golang.org/x/oauth2 v0.0.0-20210514164344-f6687ab2804c
+# golang.org/x/oauth2 v0.0.0-20210427180440-81ed05c6b58c
 golang.org/x/oauth2
 golang.org/x/oauth2/authhandler
 golang.org/x/oauth2/clientcredentials

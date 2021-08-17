@@ -12,10 +12,7 @@ import (
 )
 
 var (
-	// ErrClosed performs any operation on the closed client will return this error.
-	ErrClosed = errors.New("redis: client is closed")
-
-	// ErrPoolTimeout timed out waiting to get a connection from the connection pool.
+	ErrClosed      = errors.New("redis: client is closed")
 	ErrPoolTimeout = errors.New("redis: connection pool timeout")
 )
 
@@ -231,7 +228,8 @@ func (p *ConnPool) Get(ctx context.Context) (*Conn, error) {
 		return nil, ErrClosed
 	}
 
-	if err := p.waitTurn(ctx); err != nil {
+	err := p.waitTurn(ctx)
+	if err != nil {
 		return nil, err
 	}
 
@@ -479,7 +477,6 @@ func (p *ConnPool) ReapStaleConns() (int, error) {
 		p.connsMu.Lock()
 		cn := p.reapStaleConn()
 		p.connsMu.Unlock()
-
 		p.freeTurn()
 
 		if cn != nil {
